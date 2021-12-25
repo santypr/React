@@ -10,6 +10,9 @@ const lightTheme = {
     background: "#ffffff",
     foreground: "#0c0c0c",
     border: 'cyan'
+  },
+  images: {
+    logo: '/SantiagoPorrasLogo.png'
   }
 }
 const darkTheme = {
@@ -18,6 +21,9 @@ const darkTheme = {
     background: "#000000",
     foreground: "#c0c0c0",
     border: 'cyan'
+  },
+  images: {
+    logo: '/SantiagoPorrasLogoWhite.png'
   }
 }
 
