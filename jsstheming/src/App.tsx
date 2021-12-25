@@ -2,7 +2,6 @@ import React from 'react';
 import { ThemeProvider } from 'react-jss';
 import './App.css';
 import ThemedBlock from './components/themedcomponent/themescomponent';
-import Button from './components/themedcomponent/themescomponent';
 import { ThemeSelector } from './components/themeselector/themeselector';
 
 const lightTheme = {
