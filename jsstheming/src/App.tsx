@@ -1,7 +1,7 @@
 import React from 'react';
 import { ThemeProvider } from 'react-jss';
 import './App.css';
-import ThemedBlock from './components/themedcomponent/themescomponent';
+import ThemedBlockUseTheme from './components/themedblock/themedblockusetheme';
 import { ThemeSelector } from './components/themeselector/themeselector';
 
 const lightTheme = {
@@ -35,7 +35,7 @@ function App() {
     <>
       <ThemeProvider theme={currentTheme}>
         <ThemeSelector currentTheme={currentTheme.value} changeTheme={changeTheme} />
-        <ThemedBlock />
+        <ThemedBlockUseTheme />
       </ThemeProvider>
     </>
   )
