@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@vanilla-extract/css": "^1.6.8",
+    "@vanilla-extract/webpack-plugin": "^2.1.5"
+  }
+}
