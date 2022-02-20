@@ -13,7 +13,7 @@ const setControlProps = (state: any, isLoading: boolean, hasErrors: boolean, err
 }
 
 export const peopleSlice = createSlice({
-    name: 'counter',
+    name: 'people',
     initialState: peopleAdapter.getInitialState({
         isLoading: false, 
         hasErrors: false, 

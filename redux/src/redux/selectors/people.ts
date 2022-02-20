@@ -13,6 +13,7 @@ export const getAllPeopleSelector = peopleAdapter.getSelectors<RootState>(
     (state) => state.people
 );
 
+
 // export const personSelector = (state: RootState, id: number) => {
 //     const counter = peopleSelector(state);
 

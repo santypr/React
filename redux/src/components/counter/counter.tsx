@@ -30,7 +30,7 @@ export const Counter = () => {
         <>
             <h1> The count is: {counter.count} </h1>
             <button onClick={() => handleIncrement(1)}>Increment</button>
-            <button onClick={() => handleDecrement}>Decrement</button>
+            <button onClick={() => handleDecrement()}>Decrement</button>
             <button onClick={() => handleIncrement(5)}>Increment by 5</button>
         </>
     )

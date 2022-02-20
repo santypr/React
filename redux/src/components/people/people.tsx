@@ -8,7 +8,7 @@ export const People = () => {
     const dispatch = useDispatch();
     const people = useSelector(getAllPeopleSelector.selectAll);
     // const people = useSelector(getPeopleSelector);
-    // const { isLoading, hasErrors, errorMessage } = useSelector(peopleSelector);
+    const { isLoading, hasErrors, errorMessage } = useSelector(peopleSelector);
 
     useEffect(() => {
         dispatch(getPeopleAction());
@@ -17,7 +17,7 @@ export const People = () => {
     return (
         <>
             <div>
-                {/* <div>
+                <div>
                     Estado: {isLoading ? "Loading" : "Loaded "}
                 </div>
                 <div>
@@ -25,7 +25,7 @@ export const People = () => {
                 </div>
                 <div>
                     Errores: {errorMessage}
-                </div> */}
+                </div>
                 {people.map((item: IPeople, index: number) => {
                     return (
                         <>
