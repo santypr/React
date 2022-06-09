@@ -1,4 +1,4 @@
-import { createEntityAdapter, createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createEntityAdapter, createSlice } from "@reduxjs/toolkit";
 import IPeople from "../../models/people";
 
 export const peopleAdapter = createEntityAdapter<IPeople>({
@@ -12,6 +12,33 @@ const setControlProps = (state: any, isLoading: boolean, hasErrors: boolean, err
     state.errorMessage = errorMessage;
 }
 
+export const fetchPeople = createAsyncThunk(
+    'people/list',
+    async (dispatch, getState) => {
+        // setLoading(true);
+        const result = await fetch('https://swapi.dev/api/people/')
+            .then(response => {
+                if (response.ok) {
+                    return response.json();
+                }
+                throw response;
+            })
+            .then(data => {
+                peopleReceived(data);
+            })
+            .catch(error => {
+                console.error('Error fetching data', error)
+                setError(error);
+                return error?.response
+            })
+            .finally(() => {
+                // no hace falta porque si todo ha ido bien ya se ha hecho en el people received
+                // dispatch(setLoading(false));
+            });
+        return result;
+    }
+)
+
 export const peopleSlice = createSlice({
     name: 'people',
     initialState: peopleAdapter.getInitialState({
@@ -21,12 +48,12 @@ export const peopleSlice = createSlice({
         selected: -1
     }),
     reducers:{
-        setSelcted: (state, action) => {
+        setSelected: (state, action) => {
           state.selected = action.payload;
         },
         peopleReceived: (state, action) => {
             peopleAdapter.setAll(state, action.payload.results);
-            state.isLoading = false;
+            // state.isLoading = false;
             state.hasErrors = false;
             state.errorMessage = '';
         },
@@ -50,7 +77,19 @@ export const peopleSlice = createSlice({
             state.hasErrors = false;
             state.errorMessage = action.payload;
         }
-    }
+    },
+    // extraReducers: {
+    //     [fetchPeople.pending]: (state: RootState, action: Action) => {
+    //         setLoading(true);
+    //     },
+    //     [fetchPeople.fulfilled]: (state: RootState, action: Action) => {
+    //         setLoading(false);
+    //         state.people = action.payload;
+    //     },
+    //     [fetchPeople.pending]: (state, action) => {
+    //         setLoading(false);
+    //     }
+    // }
 });
 
 export const { peopleReceived, setLoading, setError } = peopleSlice.actions;

@@ -9,9 +9,9 @@ export const getPeopleSelector = (state: RootState) => {
     return people;
 }
 
-export const getAllPeopleSelector = peopleAdapter.getSelectors<RootState>(
-    (state) => state.people
-);
+// export const getAllPeopleSelector = peopleAdapter.getSelectors<RootState>(
+//     (state) => state.people
+// );
 
 
 // export const personSelector = (state: RootState, id: number) => {
